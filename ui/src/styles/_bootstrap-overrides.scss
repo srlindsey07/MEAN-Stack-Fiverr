@@ -1,0 +1,93 @@
+// the follow line must be before bootstrap-grid
+$enable-negative-margins: true;
+
+@import "./variables";
+@import "bootstrap/scss/bootstrap-grid";
+
+// utilities copied from node_modules/bootstrap/scss/_utilities.scss
+$utilities: map-merge(
+    $utilities,
+    (
+        "font-style": (
+            property: font-style,
+            class: font,
+            values: italic normal,
+        ),
+        "font-weight": (
+            property: font-weight,
+            class: font,
+            values: (
+                light: 300,
+                normal: 400,
+                semibold: 500,
+            ),
+        ),
+        "overflow": (
+            property: overflow,
+            values: auto hidden visible scroll,
+        ),
+        "overflow-x": (
+            property: overflow-x,
+            values: auto hidden visible scroll,
+        ),
+        "overflow-y": (
+            property: overflow-y,
+            values: auto hidden visible scroll,
+        ),
+        "text-align": (
+            responsive: true,
+            property: text-align,
+            class: text,
+            values: (
+                start: left,
+                end: right,
+                center: center,
+            ),
+        ),
+        "rounded": (
+            property: border-radius,
+            class: rounded,
+            values: (
+                null: $border-radius-default,
+                0: 0,
+                1: $border-radius-xs,
+                2: $border-radius-sm,
+                3: $border-radius-lg,
+                4: $border-radius-xl,
+                5: $border-radius-xxl,
+                circle: 50%,
+                pill: $border-radius-pill,
+            ),
+        ),
+        "rounded-end": (
+            property: border-top-right-radius border-bottom-right-radius,
+            class: rounded-end,
+            values: (
+                null: $border-radius-lg,
+                0: 0,
+                1: $border-radius-sm,
+                2: $border-radius,
+                3: $border-radius-lg,
+                4: $border-radius-xl,
+                5: $border-radius-xxl,
+                circle: 50%,
+                pill: $border-radius-pill,
+            ),
+        ),
+    )
+);
+
+@import "bootstrap/scss/utilities/api";
+
+.d-md-up,
+.d-md-up-flex {
+    display: none !important;
+}
+@include media-breakpoint-up(md) {
+    .d-md-up {
+        display: block !important;
+    }
+    .d-md-up-flex {
+        display: flex !important;
+    }
+}

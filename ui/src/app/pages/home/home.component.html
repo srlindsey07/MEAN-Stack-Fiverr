@@ -1,0 +1,28 @@
+<div class="bg-primary-900 color-white">
+    <section class="container hero-container py-8">
+        <div class="col-md-9">
+            <h1>Find the right <span class="font-italic">freelance</span> service, right away</h1>
+            <form>
+                <mat-form-field class="search-autocomplete">
+                    <input
+                        matInput
+                        [matAutocomplete]="search"
+                        type="text"
+                        placeholder="Search for any service"
+                        aria-label="Search for any service" />
+
+                    <fa-icon
+                        matSuffix
+                        class="bg-primary-600"
+                        [icon]="faMagnifyingGlass"></fa-icon>
+
+                    <mat-autocomplete #search="matAutocomplete">
+                        @for (option of options; track option) {
+                            <mat-option [value]="option">{{ option }}</mat-option>
+                        }
+                    </mat-autocomplete>
+                </mat-form-field>
+            </form>
+        </div>
+    </section>
+</div>

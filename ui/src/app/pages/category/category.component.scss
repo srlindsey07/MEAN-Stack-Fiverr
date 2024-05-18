@@ -1,0 +1,48 @@
+@use "sass:map";
+@use "../../../styles/theme" as theme;
+@import "../../../styles/mixins";
+@import "../../../styles/variables";
+
+.nested-subcategory-list {
+    .list-item-text:before {
+        overflow: hidden;
+    }
+
+    ::ng-deep .mdc-list-item {
+        position: relative;
+
+        .ng-fa-icon {
+            @include transition(opacity, 200ms);
+            position: absolute;
+            right: $spacer;
+            opacity: 0;
+            background-color: inherit;
+        }
+
+        &:hover {
+            @include transition(padding-right, 200ms);
+            padding-right: 2.5rem;
+
+            .ng-fa-icon {
+                opacity: 1;
+                z-index: 1;
+            }
+        }
+    }
+}
+
+#mostPopularCarousel {
+    ::ng-deep .mat-mdc-card-content {
+        padding: 0;
+
+        .carousel-slide-content {
+            text-decoration: none;
+            padding: $spacer;
+            display: block;
+
+            &:hover {
+                background-color: map.get(theme.$theme-grey, 100);
+            }
+        }
+    }
+}

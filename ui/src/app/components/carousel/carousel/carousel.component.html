@@ -1,0 +1,48 @@
+<!-- TODO: Add keyboard controls, communicate changes with aria-live -->
+<!-- TODO: Hide/show current items from screenreaders on page change -->
+
+<div
+    #container
+    class="carousel-container">
+    <div class="carousel-controls">
+        <button
+            mat-button
+            type="button"
+            title="Previous items"
+            [attr.aria-controls]="id"
+            [disabled]="!prevBtnEnabled"
+            (click)="prev()">
+            <fa-icon [icon]="faAngleLeft"></fa-icon>
+        </button>
+
+        <button
+            mat-button
+            type="button"
+            title="Next items"
+            [attr.aria-controls]="id"
+            [disabled]="!nextBtnEnabled"
+            (click)="next()">
+            <fa-icon [icon]="faAngleRight"></fa-icon>
+        </button>
+    </div>
+
+    <div
+        [id]="id"
+        class="carousel-slides-track-container">
+        <div
+            *ngIf="prevBtnEnabled"
+            class="track-shadow-left"></div>
+        <div
+            role="list"
+            #track
+            class="carousel-slides-track"
+            (transitionend)="updateButtonStates()">
+            @for (slide of slides; track $index) {
+                <ng-container [ngTemplateOutlet]="slide.template"></ng-container>
+            }
+        </div>
+        <div
+            *ngIf="nextBtnEnabled"
+            class="track-shadow-right"></div>
+    </div>
+</div>

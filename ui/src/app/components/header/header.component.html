@@ -1,0 +1,72 @@
+<mat-toolbar role="banner">
+    <button
+        mat-icon-button
+        class="d-md-none"
+        aria-label="Toggle menu">
+        <mat-icon>menu</mat-icon>
+    </button>
+
+    <a
+        class="logo font-2xl color-grey-800"
+        [routerLink]="''">
+        <span>sixerr</span>
+        <span class="color-primary-500 font-3xl">.</span>
+    </a>
+
+    <span class="example-spacer"></span>
+
+    <mat-list
+        class="main-nav d-flex ms-auto"
+        role="navigation">
+        <mat-list-item class="d-md-up-flex overflow-visible">
+            <button
+                mat-button
+                [matMenuTriggerFor]="exploreMenu"
+                #exploreTrigger="matMenuTrigger">
+                Browse Categories
+
+                @if (exploreTrigger.menuOpen) {
+                    <fa-icon [icon]="faAngleUp"></fa-icon>
+                } @else {
+                    <fa-icon [icon]="faAngleDown"></fa-icon>
+                }
+            </button>
+        </mat-list-item>
+
+        <mat-list-item class="d-md-up-flex overflow-visible">
+            <a
+                mat-button
+                href="#"
+                disabled
+                >Become a Seller</a
+            >
+        </mat-list-item>
+
+        <mat-list-item class="overflow-visible">
+            <a
+                mat-button
+                href="#"
+                disabled
+                >Sign In</a
+            >
+        </mat-list-item>
+
+        <mat-list-item class="overflow-visible">
+            <button
+                mat-stroked-button
+                disabled>
+                Join
+            </button>
+        </mat-list-item>
+    </mat-list>
+
+    <mat-menu #exploreMenu="matMenu">
+        @for (category of categories(); track category.slug) {
+            <button
+                mat-menu-item
+                (click)="navigateToCategoryPage(category)">
+                {{ category.name }}
+            </button>
+        } @empty {}
+    </mat-menu>
+</mat-toolbar>

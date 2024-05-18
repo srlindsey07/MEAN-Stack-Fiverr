@@ -1,0 +1,9 @@
+.logo {
+    text-decoration: none;
+}
+
+.main-nav {
+    ::ng-deep .mdc-list-item__content {
+        display: flex;
+    }
+}

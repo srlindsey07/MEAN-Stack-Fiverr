@@ -1,0 +1,32 @@
+@use "sass:map";
+@use "@angular/material" as mat;
+// @use "./bootstrap-overrides";
+
+@mixin color($theme) {
+    .mdc-text-field--outlined {
+        // @extend .rounded;
+        background-color: map.get($theme, color, background, background);
+
+        & .mdc-text-field--disabled {
+            .mat-mdc-text-field-wrapper {
+                background-color: map.get($theme, color, background, unselected-chip);
+            }
+        }
+
+        &:not(.mdc-text-field--disabled) {
+            &.mdc-text-field--focused {
+                .mdc-notched-outline {
+                    & > * {
+                        border-color: mat.get-theme-color($theme, primary, 700) !important;
+                    }
+                }
+            }
+        }
+    }
+}
+
+@mixin theme($theme) {
+    @if mat.theme-has($theme, color) {
+        @include color($theme);
+    }
+}

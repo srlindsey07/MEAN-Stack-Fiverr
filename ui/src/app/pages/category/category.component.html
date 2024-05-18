@@ -1,0 +1,56 @@
+<div class="container my-8">
+    @if (!!$activeCategory()) {
+        <mat-card class="my-12 bg-primary-900 color-white text-center mb-8">
+            <mat-card-content>
+                <h1>{{ $activeCategory().name }}</h1>
+                <span class="mat-h4">{{ $activeCategory().subtitle }}</span>
+            </mat-card-content>
+        </mat-card>
+
+        <section class="my-8">
+            <h2>Most popular in {{ $activeCategory().name }}</h2>
+            <app-carousel id="mostPopularCarousel">
+                @for (item of $popular(); track item) {
+                    <app-carousel-slide>
+                        <a
+                            href="#"
+                            class="carousel-slide-content color-grey-900"
+                            >{{ item?.name }}</a
+                        >
+                    </app-carousel-slide>
+                }
+            </app-carousel>
+        </section>
+
+        <section>
+            <h2>Explore {{ $activeCategory().name }}</h2>
+
+            <div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 row-cols-lg-4">
+                @for (subcategory of $activeCategory().subcategories; track $index) {
+                    <article>
+                        <img
+                            [src]="subcategory.imageUrl"
+                            class="img-fluid rounded-3 mb-5" />
+                        <h3 class="m-0">{{ subcategory.name }}</h3>
+                        <mat-nav-list class="nested-subcategory-list ms-n6">
+                            @for (nestedSubcategory of subcategory.nestedSubcategories; track nestedSubcategory.slug) {
+                                <a
+                                    mat-list-item
+                                    href="#">
+                                    <span class="d-flex">
+                                        <span class="list-item-text">{{ nestedSubcategory.name }}</span>
+                                        <fa-icon
+                                            [icon]="faArrowRightLong"
+                                            class="ms-auto"></fa-icon>
+                                    </span>
+                                </a>
+                            }
+                        </mat-nav-list>
+                    </article>
+                }
+            </div>
+        </section>
+    } @else {
+        <p>There is no category selected.</p>
+    }
+</div>

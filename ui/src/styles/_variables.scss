@@ -1,0 +1,23 @@
+$spacer: 1rem !default;
+$spacers: (
+    0: 0,
+    1: $spacer * 0.125,
+    2: $spacer * 0.25,
+    3: $spacer * 0.5,
+    4: $spacer * 0.625,
+    5: $spacer * 0.75,
+    6: $spacer,
+    7: $spacer * 1.5,
+    8: $spacer * 2,
+    9: $spacer * 2.5,
+    10: $spacer * 3,
+    11: $spacer * 3.25,
+) !default;
+
+$border-radius-xs: 0.25rem;
+$border-radius-sm: 0.375rem;
+$border-radius-lg: 0.5rem;
+$border-radius-xl: 1rem;
+$border-radius-xxl: 2rem;
+$border-radius-pill: 50rem;
+$border-radius-default: $border-radius-lg;

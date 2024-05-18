@@ -1,0 +1,18 @@
+@use "sass:map";
+@import "../../../styles/variables";
+
+::ng-deep .search-autocomplete {
+    .mat-mdc-form-field-icon-suffix {
+        color: white;
+        align-self: stretch;
+        display: flex;
+
+        .ng-fa-icon {
+            display: flex;
+            align-items: center;
+            padding: 0 map.get($spacers, 7);
+            border-top-right-radius: $border-radius-default !important;
+            border-bottom-right-radius: $border-radius-default !important;
+        }
+    }
+}

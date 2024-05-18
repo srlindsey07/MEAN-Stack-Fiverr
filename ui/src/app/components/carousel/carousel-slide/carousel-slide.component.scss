@@ -1,0 +1,10 @@
+@import "../../../../styles/variables";
+
+.mat-mdc-card {
+    flex-grow: 1;
+    flex-shrink: 0;
+
+    &:not(:last-child) {
+        margin-right: map-get($spacers, 6);
+    }
+}

@@ -1,0 +1,62 @@
+@use "sass:map";
+@import "../../../../styles/variables";
+@import "../../../../styles/mixins";
+
+.carousel-container {
+    position: relative;
+
+    .carousel-controls {
+        position: absolute;
+        right: 0;
+        top: map.get($spacers, 11) * -1;
+
+        .mdc-button {
+            min-width: map.get($spacers, 11);
+        }
+    }
+
+    .carousel-slides-track-container {
+        overflow-x: hidden;
+        padding-top: map.get($spacers, 2);
+        padding-bottom: map.get($spacers, 3);
+        padding-left: map.get($spacers, 2);
+        margin-left: map.get($spacers, 2) * -1;
+
+        .carousel-slides-track {
+            position: relative;
+            display: flex;
+            flex-direction: row !important;
+            flex-wrap: nowrap;
+            transition: transform ease-in-out 600ms;
+        }
+
+        [class^="track-shadow"] {
+            position: absolute;
+            top: 0;
+            bottom: 0;
+            width: 4rem;
+            z-index: 1;
+        }
+
+        .track-shadow-left {
+            background-image: linear-gradient(to right, rgba(255, 255, 255, 1) 25%, rgba(255, 255, 255, 0) 100%);
+            left: map.get($spacers, 2) * -1;
+        }
+
+        .track-shadow-right {
+            background-image: linear-gradient(to left, rgba(255, 255, 255, 1) 25%, rgba(255, 255, 255, 0) 100%);
+            right: map.get($spacers, 2) * -1;
+        }
+
+        // &:before {
+        //     content: "";
+        //     position: absolute;
+        //     left: 0;
+        //     top: 0;
+        //     bottom: 0;
+        //     background-color: white;
+        //     right: 95%;
+        //     z-index: 1;
+        // }
+    }
+}

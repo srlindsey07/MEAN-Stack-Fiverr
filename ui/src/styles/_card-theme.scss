@@ -1,0 +1,12 @@
+@use "sass:map";
+@use "@angular/material" as mat;
+
+@mixin elevation($theme) {
+    .mat-mdc-card {
+        @include mat.elevation(20);
+    }
+}
+
+@mixin theme($theme) {
+    @include elevation($theme);
+}

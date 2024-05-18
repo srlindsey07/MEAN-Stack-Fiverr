@@ -1,0 +1,45 @@
+{
+  "name": "nodejs-express-mongodb",
+  "version": "1.0.0",
+  "description": "Node.js Restful CRUD API using Node.js, Express and MongoDB",
+  "main": "./dist/server.js",
+  "scripts": {
+    "start": "concurrently \"npx tsc\" \"tsx dist/server.js\"",
+    "dev": "concurrently \"npx tsc\" \"tsx watch ./server.ts\"",
+    "build": "npx tsc",
+    "seed-db": "tsx src/data/seed-database.ts"
+  },
+  "keywords": [
+    "nodejs",
+    "express",
+    "mongodb",
+    "rest",
+    "api"
+  ],
+  "author": "Stephanie Rentfrow",
+  "license": "ISC",
+  "dependencies": {
+    "body-parser": "^1.20.2",  
+    "chalk": "^5.3.0",
+    "concurrently": "^8.2.2",
+    "cors": "^2.8.5",
+    "dotenv": "^16.4.5",
+    "express": "^4.19.2",
+    "mongoose": "^8.3.3",
+    "morgan": "^1.10.0"
+  },
+  "devDependencies": {
+    "@faker-js/faker": "^8.4.1",
+    "@types/chalk": "^2.2.0",
+    "@types/cors": "^2.8.17",
+    "@types/dotenv": "^8.2.0",
+    "@types/express": "^4.17.21",
+    "@types/mongoose": "^5.11.97",
+    "@types/morgan": "^1.9.9",
+    "@types/node": "^20.12.8",
+    "nodemon": "^3.1.0",
+    "ts-node": "^10.9.2",
+    "tsx": "^4.9.0",
+    "typescript": "^5.4.5"
+  }
+}

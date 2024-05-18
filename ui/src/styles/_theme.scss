@@ -1,0 +1,77 @@
+@use "@angular/material" as mat;
+@use "./form-field-theme" as formField;
+@use "./card-theme" as card;
+@use "sass:map";
+@import "typography.scss";
+
+@include mat.core();
+
+$theme-primary: mat.define-palette(mat.$green-palette);
+$theme-accent: mat.define-palette(mat.$amber-palette);
+$theme-grey: mat.define-palette(mat.$gray-palette);
+$theme-disabled-bg: map.get(mat.$gray-palette, 300);
+
+$light-theme: mat.define-light-theme(
+    (
+        color: (
+            primary: $theme-primary,
+            accent: $theme-accent,
+            grey: $theme-grey,
+        ),
+        typography: $theme-typography,
+        density: 0,
+    )
+);
+
+@include mat.all-component-themes($light-theme);
+@include mat.all-component-typographies($theme-typography);
+@include formField.theme($light-theme);
+
+:root {
+    --mat-menu-item-label-text-size: map.get($theme-typography, $body-2, $font-size);
+    --mdc-list-list-item-label-text-size: map.get($theme-typography, $body-2, $font-size);
+}
+
+$theme-color-body-text: map.get($theme-grey, 900);
+
+/* #region MATERIAL COLOR UTILITIES */
+// Creates classes for setting background color, text color and border color
+// using the Angular Material theme colors and any other palette provided.
+// Examples:
+// .bg-primary-500 { background-color: #4caf50; }
+// .color-accent-700 { color: #ffa000; }
+// .border-warn-200 { border-color: #ef9a9a; }
+// .color-grey-900 { color: #212121; }
+$palettes: (
+    "primary": map.get($light-theme, "color", "primary"),
+    "accent": map.get($light-theme, "color", "accent"),
+    "warn": map.get($light-theme, "color", "warn"),
+    "grey": mat.$grey-palette,
+);
+$properties: (
+    "bg": "background-color",
+    "color": "color",
+    "border": "border-color",
+);
+
+@mixin color-utilities {
+    @each $abbr, $property in $properties {
+        @each $palette, $config in $palettes {
+            @for $i from 1 through 10 {
+                $currentConfig: nth($config, $i);
+                $currentHue: nth($currentConfig, 1);
+                $currentColor: nth($currentConfig, 2);
+                .#{$abbr}-#{$palette}-#{$currentHue} {
+                    #{$property}: #{$currentColor} !important;
+                }
+            }
+        }
+    }
+    .bg-white {
+        background-color: white;
+    }
+    .color-white {
+        color: white;
+    }
+}
+@include color-utilities();

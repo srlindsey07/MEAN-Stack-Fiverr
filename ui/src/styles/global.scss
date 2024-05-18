@@ -1,0 +1,33 @@
+@use "@angular/material" as mat;
+
+@use "./bootstrap-overrides.scss";
+@use "./theme.scss" as theme;
+
+// UTILITIES
+.img-fluid {
+    width: 100%;
+    height: auto;
+}
+
+// .color-body-text {
+//     @extend .color-grey-900;
+// }
+
+// GLOBAL STYLES
+:root .mat-mdc-card {
+    @include mat.elevation(3);
+}
+
+html,
+body {
+    height: 100%;
+}
+body {
+    color: theme.$theme-color-body-text;
+    margin: 0;
+    font-family: Roboto, "Helvetica Neue", sans-serif;
+}
+
+.mat-mdc-form-field {
+    width: 100%;
+}
